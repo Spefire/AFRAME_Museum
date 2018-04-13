@@ -20,12 +20,17 @@
         <script>
           createMaterials();
         </script>
-      </a-assets
+      </a-assets>
 	  
-	  <!-- Gestion des controleurs -->
-	  <a-entity windows-motion-controls="hand: right" teleport-controls="curveShootingSpeed: 8; button: trigger; hitCylinderRadius: 0.5; hitCylinderColor: #66AAFF; curveHitColor:#66AAFF"></a-entity>
-	  <a-entity windows-motion-controls="hand: left"></a-entity>
-	  
+	  <!-- Gestion VR -->
+	  <a-entity id="cameraRig">
+		<!-- Camera -->
+		<a-entity id="head" camera wasd-controls look-controls></a-entity>
+		<!-- Controleurs -->
+		<a-entity windows-motion-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; curveShootingSpeed: 8; button: trigger; hitCylinderRadius: 0.5; hitCylinderColor: #AAAAAA; curveHitColor:#AAAAAA"></a-entity>
+		<a-entity windows-motion-controls="hand: left"></a-entity>
+	  </a-entity>
+	 
 	  <!-- Controller avec pointer laser
 	  <a-entity laser-controls="hand: right"></a-entity> -->
 
