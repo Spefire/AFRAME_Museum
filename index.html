@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Museum AFRAME</title>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
     <script src="javascripts/materials.js"></script>
     <script src="javascripts/modelScene.js"></script>
     <script src="javascripts/modelEnvironment.js"></script>
@@ -22,8 +23,11 @@
       </a-assets
 	  
 	  <!-- Gestion des controleurs -->
-	  <a-entity windows-motion-controls="hand: left"></a-entity>
-	  <a-entity windows-motion-controls="hand: right"></a-entity>
+	  <a-entity windows-motion-controls="hand: left" teleport-controls></a-entity>
+	  <a-entity windows-motion-controls="hand: right" teleport-controls></a-entity>
+	  
+	  <!-- Controller avec pointer laser
+	  <a-entity laser-controls="hand: right"></a-entity> -->
 
       <!-- Lumieres et Skybox -->
       <script>
