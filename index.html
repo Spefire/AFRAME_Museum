@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Museum AFRAME</title>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="javascripts/materials.js"></script>
+    <script src="javascripts/modelScene.js"></script>
+    <script src="javascripts/modelEnvironment.js"></script>
+    <script src="javascripts/modelMuseum.js"></script>
+    <script src="javascripts/modelElements.js"></script>
+    <script src="javascripts/utils.js"></script>
+  </head>
+  <body>
+    <a-scene shadow="type: pcfsoft">
+
+      <!-- Gestion des textures -->
+      <a-assets>
+        <script>
+          createMaterials();
+        </script>
+      </a-assets
+	  
+	  <!-- Gestion des controleurs -->
+	  <a-entity windows-motion-controls="hand: left"></a-entity>
+	  <a-entity windows-motion-controls="hand: right"></a-entity>
+
+      <!-- Lumieres et Skybox -->
+      <script>
+        createSceneElements();
+      </script>
+
+      <!-- Exterieur -->
+      <script>
+        createEnvironment();
+      </script>
+
+      <!-- Musee -->
+      <script>
+        createMuseum();
+      </script>
+
+      <!-- Elements du Musee -->
+      <script>
+        createElementsMuseum();
+      </script>
+
+    </a-scene>
+  </body>
+</html>
