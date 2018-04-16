@@ -36,6 +36,28 @@ function createElementsMuseum(){
 	//Table
 	createTable(-6,hTable+0.5,8);
 	createTable(6,hTable+0.5,8);
+	
+	//----- Interactions -----
+	
+	//Objets	
+	var objBox = document.createElement('a-entity');
+	objBox.setAttribute('class', "grabbable");
+	objBox.setAttribute('geometry', {primitive: 'box', height: 0.2, width: 0.2, depth: 0.2});
+	objBox.setAttribute('position', {x: 5, y: 1.5, z: -10});
+	objBox.setAttribute('material', {src: "#mat_marble"});
+
+	var objBall = document.createElement('a-entity');
+	objBox.setAttribute('class', "draggable");
+	objBall.setAttribute('geometry', {primitive: 'sphere', radius: 0.1});
+	objBall.setAttribute('position', {x: -5, y: 1.5, z: -10});
+	objBall.setAttribute('material', {src: "#mat_marble"});
+	
+	scene.appendChild(objBox);
+	scene.appendChild(objBall);
+	
+	// Trigger pressed event : Follow, Stop (cube) GRAP
+
+	// Trigger pressed event : Follow, Return (ball) DRAG AND DROP
 }
 
 function createRectPainting(x, y, z, rotation, width, height, depth, numPainting) {
