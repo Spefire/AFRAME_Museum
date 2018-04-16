@@ -125,10 +125,11 @@ function createFence(x, y, z, width, height, vertical, big) {
 function createFloor(x, y, z, width, height, depth) {
 	
 	var floor = document.createElement('a-entity');
+	floor.setAttribute('mixin', "canTeleport");
 	floor.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	floor.setAttribute('position', {x: x, y: y, z: z});
 	floor.setAttribute('material', {src: "#mat_floor"});
-	
+
 	scene.appendChild(floor);
 }
 
@@ -188,6 +189,7 @@ function createStairs(x, y, z, width, height, depth, wallTickness, nb) {
 	for (var i = 0; i < nb; i++) {		
 	
 		var stair = document.createElement('a-entity');
+		stair.setAttribute('mixin', "canTeleport");
 		stair.setAttribute('geometry', {primitive: 'box', height: height/nb + i*height/nb, width: width, depth: depth/nb});
 		stair.setAttribute('position', {x: posX, y: posY, z: posZ});
 		stair.setAttribute('material', {src: "#mat_iron"});
@@ -228,6 +230,7 @@ function createElevator(x, y, z, width, height, depth, wallTickness, floorTickne
 	var buttonCallDown = createButtonDownElevator(x-width/3,offsetRDC+0.2,z-depth/2-0.1,0.4,0.4,0.1,false);
 
 	var elevator = document.createElement('a-entity');
+	elevator.setAttribute('mixin', "canTeleport");
 	elevator.setAttribute('geometry', {primitive: 'box', height: floorTickness+0.1, width: width, depth: depth});
 	elevator.setAttribute('position', {x: x, y: y-height/2, z: z});
 	elevator.setAttribute('material', {src: "#mat_iron"});

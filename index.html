@@ -27,8 +27,9 @@
 		<!-- Camera -->
 		<a-entity id="head" camera wasd-controls look-controls></a-entity>
 		<!-- Controleurs -->
-		<a-entity windows-motion-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; curveShootingSpeed: 8; button: trigger; hitCylinderRadius: 0.5; hitCylinderColor: #AAAAAA; curveHitColor:#AAAAAA"></a-entity>
-		<a-entity windows-motion-controls="hand: left"></a-entity>
+		<a-mixin id="teleport" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities: [mixin='canTeleport']; curveShootingSpeed: 8; button: trigger; hitCylinderRadius: 0.5; hitCylinderColor: #33EE33; curveHitColor:#33EE33"></a-mixin>
+		<a-entity id ="rightController" windows-motion-controls="hand: right" mixin="teleport"></a-entity>
+		<a-entity id ="leftController" windows-motion-controls="hand: left" mixin="teleport"></a-entity>
 	  </a-entity>
 	 
 	  <!-- Controller avec pointer laser

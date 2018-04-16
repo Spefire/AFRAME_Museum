@@ -50,6 +50,7 @@ function createEnvironment(){
 function createGround(x, y, z, width, height) {
 	
 	var ground = document.createElement('a-entity');
+	ground.setAttribute('mixin', "canTeleport");
 	ground.setAttribute('geometry', {primitive: 'plane', height: height, width: width});
 	ground.setAttribute('position', {x: x, y: y, z: z});
 	ground.setAttribute('material', {src: "#mat_grass", side: "double"});
