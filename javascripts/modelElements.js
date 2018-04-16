@@ -215,6 +215,18 @@ function createSculpture02(x, y, z) {
 		box.setAttribute('geometry', {primitive: 'box', height: 0.1, width: 2, depth: 0.25});
 		box.setAttribute('position', {x: x, y: y+0.1*i, z: z-1.5});
 		box.setAttribute('material', {src: "#mat_marble"});
+		
+		var rotation = (20*i)* 18;
+		
+		var anim = document.createElement('a-animation');
+		anim.setAttribute('attribute', "rotation");
+		anim.setAttribute('to', "0 "+rotation+" 0");
+		anim.setAttribute('direction', "alternate");
+		anim.setAttribute('dur', "16000");
+		anim.setAttribute('easing', "linear");
+		anim.setAttribute('repeat', "indefinite");
+		
+		box.appendChild(anim);
 		scene.appendChild(box);
 	}
 	
@@ -223,6 +235,18 @@ function createSculpture02(x, y, z) {
 		box.setAttribute('geometry', {primitive: 'box', height: 0.1, width: 2, depth: 0.25});
 		box.setAttribute('position', {x: x, y: y+0.1*i, z: z-1.5});
 		box.setAttribute('material', {src: "#mat_marble"});
+		
+		var rotation = (360-20*i)* 18;
+		
+		var anim = document.createElement('a-animation');
+		anim.setAttribute('attribute', "rotation");
+		anim.setAttribute('to', "0 "+rotation+" 0");
+		anim.setAttribute('direction', "alternate");
+		anim.setAttribute('dur', "16000");
+		anim.setAttribute('easing', "linear");
+		anim.setAttribute('repeat', "indefinite");
+		
+		box.appendChild(anim);
 		scene.appendChild(box);
 	}
 }
