@@ -9,7 +9,7 @@ function createEnvironment(){
 	//----- Environnement -----
 	
 	//Sol herbeux
-	createGround(0,0,0,100,100);
+	createGround(0,0,0,100,floorTickness/2,100);
 	
 	//Arbres
 	var heightT = 7;
@@ -47,14 +47,13 @@ function createEnvironment(){
 	createBush(9,heightB/2-0.15,-15.5,heightB*5,heightB);
 }
 
-function createGround(x, y, z, width, height) {
+function createGround(x, y, z, width, height, depth) {
 	
 	var ground = document.createElement('a-entity');
 	ground.setAttribute('mixin', "canTeleport");
-	ground.setAttribute('geometry', {primitive: 'plane', height: height, width: width});
+	ground.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	ground.setAttribute('position', {x: x, y: y, z: z});
 	ground.setAttribute('material', {src: "#mat_grass", side: "double"});
-	ground.setAttribute('rotation', {x: -90, y: 0, z: 0});
 	
 	scene.appendChild(ground);
 }
