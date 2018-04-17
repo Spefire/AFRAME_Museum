@@ -47,7 +47,7 @@ function createElementsMuseum(){
 	objBox.setAttribute('material', {src: "#mat_marble"});
 
 	var objBall = document.createElement('a-entity');
-	objBox.setAttribute('class', "draggable");
+	objBall.setAttribute('class', "grabbable");
 	objBall.setAttribute('geometry', {primitive: 'sphere', radius: 0.1});
 	objBall.setAttribute('position', {x: -5, y: 1.5, z: -10});
 	objBall.setAttribute('material', {src: "#mat_marble"});
