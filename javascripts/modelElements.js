@@ -41,23 +41,23 @@ function createElementsMuseum(){
 	
 	//Objets	
 	var objBox = document.createElement('a-entity');
+	
+	// Trigger pressed event : Follow, Stop (cube) GRAP
 	objBox.setAttribute('class', "grabbable");
 	objBox.setAttribute('geometry', {primitive: 'box', height: 0.2, width: 0.2, depth: 0.2});
-	objBox.setAttribute('position', {x: 5, y: 1.5, z: -10});
+	objBox.setAttribute('position', {x: 6, y: hTable+1.5, z: 7.5});
 	objBox.setAttribute('material', {src: "#mat_marble"});
 
 	var objBall = document.createElement('a-entity');
+	
+	// Trigger pressed event : Follow, Return (ball) DRAG AND DROP
 	objBall.setAttribute('class', "grabbable");
 	objBall.setAttribute('geometry', {primitive: 'sphere', radius: 0.1});
-	objBall.setAttribute('position', {x: -5, y: 1.5, z: -10});
+	objBall.setAttribute('position', {x: -6, y: hTable+1.5, z: 7.5});
 	objBall.setAttribute('material', {src: "#mat_marble"});
 	
 	scene.appendChild(objBox);
 	scene.appendChild(objBall);
-	
-	// Trigger pressed event : Follow, Stop (cube) GRAP
-
-	// Trigger pressed event : Follow, Return (ball) DRAG AND DROP
 }
 
 function createRectPainting(x, y, z, rotation, width, height, depth, numPainting) {
