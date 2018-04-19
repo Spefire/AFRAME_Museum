@@ -50,6 +50,7 @@ function createEnvironment(){
 function createGround(x, y, z, width, height, depth) {
 	
 	var ground = document.createElement('a-entity');
+	ground.setAttribute('static-body','');
 	ground.setAttribute('mixin', "canTeleport");
 	ground.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	ground.setAttribute('position', {x: x, y: y, z: z});

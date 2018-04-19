@@ -93,6 +93,7 @@ function createMuseum(){
 function createWall(x, y, z, width, height, depth, vertical) {
 	
 	var wall = document.createElement('a-entity');
+	wall.setAttribute('static-body','');
 	wall.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	wall.setAttribute('position', {x: x, y: y, z: z});
 	wall.setAttribute('material', {src: "#mat_wall"});
@@ -125,6 +126,7 @@ function createFence(x, y, z, width, height, vertical, big) {
 function createFloor(x, y, z, width, height, depth) {
 	
 	var floor = document.createElement('a-entity');
+	floor.setAttribute('static-body','');
 	floor.setAttribute('mixin', "canTeleport");
 	floor.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	floor.setAttribute('position', {x: x, y: y, z: z});
@@ -136,6 +138,7 @@ function createFloor(x, y, z, width, height, depth) {
 function createGlassWall(x, y, z, width, height, depth, vertical, upper) {
 
 	var wall = document.createElement('a-entity');
+	wall.setAttribute('static-body','');
 	wall.setAttribute('geometry', {primitive: 'box', height: height*0.2, width: width, depth: depth});
 	wall.setAttribute('material', {src: "#mat_wall"});
 	
@@ -163,6 +166,7 @@ function createGlassWall(x, y, z, width, height, depth, vertical, upper) {
 function createRoof(x, y, z, width, height, depth) {
 	
 	var roof = document.createElement('a-entity');
+	roof.setAttribute('static-body','');
 	roof.setAttribute('geometry', {primitive: 'box', height: height, width: width, depth: depth});
 	roof.setAttribute('position', {x: x, y: y, z: z});
 	roof.setAttribute('material', {src: "#mat_roof"});

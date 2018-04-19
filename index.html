@@ -4,16 +4,11 @@
     <meta charset="utf-8" />
     <title>Museum AFRAME</title>
 	
-	<!-- AFRAME : Principal -->
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<!-- BUNDLE : AFRAME : Teleportation -->
+	<script src="bundle.js"></script>
 	
 	<!-- AFRAME : Teleportation -->
 	<script src="https://unpkg.com/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
-	
-	<!-- AFRAME : Interaction -->
-    <script src="components/aabb-collider.js"></script>
-    <script src="components/grab.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@4.0.1/dist/aframe-event-set-component.min.js"></script>
 	
 	<!-- MUSEUM -->
     <script src="javascripts/materials.js"></script>
@@ -24,7 +19,7 @@
     <script src="javascripts/utils.js"></script>
   </head>
   <body>
-    <a-scene shadow="type: pcfsoft">
+    <a-scene shadow="type: pcfsoft" physics="gravity: -9.8">
 
       <!-- Gestion des textures -->
       <a-assets>
@@ -35,14 +30,35 @@
 	  
 	  <!-- Gestion VR -->
 	  <a-entity id="cameraRig" position="0 0 -30" rotation="0 180 0">
+	  
 		<!-- Camera -->
 		<a-entity id="head" camera wasd-controls look-controls></a-entity>
+		
+		<!-- Mixins -->
+		<a-mixin id="teleport"
+		teleport-controls="cameraRig: #cameraRig;
+		teleportOrigin: #head;
+		collisionEntities: [mixin='canTeleport'];
+		curveShootingSpeed: 8;
+		button: trigger;
+		hitCylinderRadius: 0.5;
+		hitCylinderColor: #33EE33;
+		curveHitColor:#33EE33">
+		</a-mixin>
+		
+		<a-mixin id="interaction"
+		physics-collider
+		static-body="shape: sphere;
+		sphereRadius: 0.1">
+		</a-mixin>
+		
 		<!-- Controleurs -->
-		<a-mixin id="teleport" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities: [mixin='canTeleport']; curveShootingSpeed: 8; button: trigger; hitCylinderRadius: 0.5; hitCylinderColor: #33EE33; curveHitColor:#33EE33"></a-mixin>
-		<a-entity id ="rightController" windows-motion-controls="hand: right" mixin="teleport" aabb-collider="objects: .grabbable;" grab></a-entity>
-		<a-entity id ="leftController" windows-motion-controls="hand: left" mixin="teleport" aabb-collider="objects: .grabbable;" grab></a-entity>
+		<a-entity id ="rightController" windows-motion-controls="hand: right" mixin="teleport interaction"></a-entity>
+		<a-entity id ="leftController" windows-motion-controls="hand: left" mixin="teleport interaction"></a-entity>
 	  </a-entity>
 
+	  <a-entity geometry="primitive: sphere; radius: 0.5;" position="0 1 -25" rotation="0 180 0" dynamic-body grabbable>
+	  
       <!-- Lumieres et Skybox -->
       <script>
         createSceneElements();
