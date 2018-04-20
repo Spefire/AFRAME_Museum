@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Museum AFRAME</title>
 	
-	<!-- BUNDLE : AFRAME : Teleportation -->
+	<!-- BUNDLE : server.js -->
 	<script src="bundle.js"></script>
 	
 	<!-- AFRAME : Teleportation -->
@@ -17,9 +17,23 @@
     <script src="javascripts/modelMuseum.js"></script>
     <script src="javascripts/modelElements.js"></script>
     <script src="javascripts/utils.js"></script>
+	
+	<script>
+		AFRAME.registerComponent('phase-shift', {
+			init: function () {
+			  var el = this.el;
+			  el.addEventListener('gripdown', function () {
+				el.setAttribute('collision-filter', {collisionForces: true});
+			  });
+			  el.addEventListener('gripup', function () {
+				el.setAttribute('collision-filter', {collisionForces: false});
+			  });
+			}
+		  });
+	</script>
   </head>
   <body>
-    <a-scene shadow="type: pcfsoft" physics="gravity: -9.8">
+    <a-scene shadow="type: pcfsoft" physics="gravity: -2">
 
       <!-- Gestion des textures -->
       <a-assets>
@@ -49,15 +63,23 @@
 		<a-mixin id="interaction"
 		physics-collider
 		static-body="shape: sphere;
-		sphereRadius: 0.1">
+		sphereRadius: 0.05"
+		phase-shift
+		super-hands="colliderEvent: collisions;
+		colliderEventProperty: els;
+        colliderEndEvent: collisions;
+		colliderEndEventProperty: clearedEls;
+        colliderState:">
 		</a-mixin>
 		
 		<!-- Controleurs -->
-		<a-entity id ="rightController" windows-motion-controls="hand: right" mixin="teleport interaction"></a-entity>
-		<a-entity id ="leftController" windows-motion-controls="hand: left" mixin="teleport interaction"></a-entity>
+		<a-entity id ="rightController" windows-motion-controls="hand: right" mixin="interaction"></a-entity>
+		<a-entity id ="leftController" windows-motion-controls="hand: left" mixin="teleport"></a-entity>
 	  </a-entity>
 
-	  <a-entity geometry="primitive: sphere; radius: 0.5;" position="0 1 -25" rotation="0 180 0" dynamic-body grabbable>
+	  <a-entity geometry="primitive: box" position="0 2 -25" rotation="0 180 0" material="color: blue" dynamic-body hoverable grabbable
+	  event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+      event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"></a-entity>
 	  
       <!-- Lumieres et Skybox -->
       <script>
